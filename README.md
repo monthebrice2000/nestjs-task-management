@@ -22,9 +22,12 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Description.
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+
+I create an API rest connected to server POSTGRESQL database and which is consumed in FrontEnd.
+I used Guard modules to protected all routes and handling authorization.
 
 ## Installation
 

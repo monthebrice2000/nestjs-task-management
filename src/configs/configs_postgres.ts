@@ -11,8 +11,8 @@ export const configs_postgres = (
   return {
     /**
      * Object with ssl parameters
-     */
-    ssl: configService.get('MODE') === 'prod',
+
+    ssl: configService.get('MODE') === 'prod',*/
     /**
      * Database type.
      */

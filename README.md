@@ -28,6 +28,14 @@
 
 I create an API rest connected to server POSTGRESQL database and which is consumed in FrontEnd.
 I used Guard modules to protected all routes and handling authorization.
+I used module-alias to short the path of every package
+I test all my APIs with POSTman. I used Pipes to validate incoming requests.
+I used TypeOrm for Object Relational Mapping between entity in Object Model and Entity in Relational Model.
+I used controllers for handling request and services for business logic.
+I used repository for accessing database
+I used Jwt for generating token and authentication and authorization.
+I used Interceptors for Data Serialization.
+I can create my Own Decorator function to extract another data in the request to help controller for handling.
 
 ## Installation
 

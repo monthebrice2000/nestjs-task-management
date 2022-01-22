@@ -1,11 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { Task, TaskStatus } from './models/task.interface';
-import { v4 as uuid } from 'uuid';
-import { FilterDto } from './models/filter.dto';
-import { DeleteResult, Repository, UpdateResult } from 'typeorm';
-import { TaskEntity } from './models/task.entity';
-import { InjectRepository } from '@nestjs/typeorm';
-import { TaskEntityRepository } from './models/task.entity.repository';
+import { Task, TaskStatus } from '@models/task.interface';
+import { TaskEntityRepository } from '@models/task.entity.repository';
+import { TaskEntity } from '@models/task.entity';
+import { DeleteResult, UpdateResult } from 'typeorm';
+import { FilterDto } from '@models/filter.dto';
 @Injectable()
 export class TasksService {
   private tasks: Task[] = [];

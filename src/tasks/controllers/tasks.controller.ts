@@ -11,12 +11,11 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import { TasksService } from './tasks.service';
-import { Task, TaskStatus } from './models/task.interface';
-import { TaskDto } from './models/task.dto';
-import { FilterDto } from './models/filter.dto';
-import { TaskStatusUpdate } from './models/task.status.update';
-import { InjectRepository } from '@nestjs/typeorm';
+import { TasksService } from '@services/tasks.service';
+import { Task } from '@models/task.interface';
+import { TaskDto } from '@models/task.dto';
+import { FilterDto } from '@models/filter.dto';
+import { TaskStatusUpdate } from '@models/task.status.update';
 import { AuthGuard } from '@nestjs/passport';
 
 @Controller('tasks')

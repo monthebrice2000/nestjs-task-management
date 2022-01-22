@@ -26,7 +26,7 @@ export const configs_postgres = (
     /**
      * Migrations to be loaded for this connection.
      * Accepts both migration classes and directories where from migrations need to be loaded.
-     * Directories support glob patterns.
+     * Directories support glob  patterns.
      */
     migrations: [__dirname + '/**/*/*{.ts,.js}'],
 

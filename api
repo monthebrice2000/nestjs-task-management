@@ -1,5 +1,5 @@
-yarn --ignore-engines add dotenv typeorm @nestjs/typeorm class-validator class-transformer pg sqlite3 bcrypt mysql
-
+yarn --ignore-engines add dotenv typeorm @nestjs/typeorm class-validator class-transformer pg sqlite3 bcrypt mysql cross-env @nestjs/conf
+ig heroku
 ###
 GET http://localhost:3000/auth/signIn
 Content-Type: application/json
@@ -16,19 +16,55 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJya
 POST http://localhost:3000/auth/signUp
 Content-Type: application/json
 
-{   "username": "brice",   "password": "pepapepa" }
+{   "username": "djeumou",   "password": "pepapepa" }
 
 ###
 GET http://localhost:3000/auth/signIn
 Content-Type: application/json
 
-{   "username": "brice",   "password": "pepapepa" }
+{   "username": "djeumou",   "password": "pepapepa" }
 
 ###
 ###
+GET http://localhost:3000/tasks
+Accept: application/json
+//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJyaWNlIiwiaWF0IjoxNjQyODU1MzQ4LCJleHAiOjE2NDI5NDE3NDh9.zHPEs4KRuuXrjc_l7t1IM4Ij66vdXC9pmdYCRULFEdU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRqZXVtb3UiLCJpYXQiOjE2NDI4NTY4MzQsImV4cCI6MTY0Mjk0MzIzNH0.WYW4rcVza8sgyJzrJ5E79FE9SXcpu98S5y3bIDYn1xY
+###
+
+
 POST http://localhost:3000/tasks
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJyaWNlIiwiaWF0IjoxNjQyMzA1MDYyLCJleHAiOjE2NDIzOTE0NjJ9.4jFkdK9X4-723iG2nZgxcMwayaSjx-JF8Nf7cbKMF1E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJyaWNlIiwiaWF0IjoxNjQyODQyNzA3LCJleHAiOjE2NDI5MjkxMDd9.OeloUmj41CG2XuAJuffg8n4-h6uewi712oRvzw2TKPw
 
-{   "title":  "merci",   "description": "merci" }
+{   "title":  "merci",   "description": "merciwdvdf" }
+
+###
+
+GET http://localhost:3000/tasks/ab054f39-1dc4-456e-8406-fbefdef462f9
+Accept: application/json
+//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRqZXVtb3UiLCJpYXQiOjE2NDI4NTY2NDAsImV4cCI6MTY0Mjk0MzA0MH0.O_Scpz5cmUVTDdQxFexUy6I4Y6MqDdVN6FAFREF5_aQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJyaWNlIiwiaWF0IjoxNjQyODU2MTAwLCJleHAiOjE2NDI5NDI1MDB9.g6Leq3UWAfJcaYoY5rK-wLRckwsqdUdeITMNid00NwU
+###
+
+PATCH http://localhost:3000/tasks/ab054f39-1dc4-456e-8406-fbefdef462f9
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRqZXVtb3UiLCJpYXQiOjE2NDI4NTY2NDAsImV4cCI6MTY0Mjk0MzA0MH0.O_Scpz5cmUVTDdQxFexUy6I4Y6MqDdVN6FAFREF5_aQ
+//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJyaWNlIiwiaWF0IjoxNjQyODU2MTAwLCJleHAiOjE2NDI5NDI1MDB9.g6Leq3UWAfJcaYoY5rK-wLRckwsqdUdeITMNid00NwU
+
+{
+  "status": {
+    "status":"IN_PROGRESS"
+  }
+}
+###
+
+DELETE http://localhost:3000/tasks/ab054f39-1dc4-456e-8406-fbefdef462f9
+Accept: application/json
+//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRqZXVtb3UiLCJpYXQiOjE2NDI4NTY2NDAsImV4cCI6MTY0Mjk0MzA0MH0.O_Scpz5cmUVTDdQxFexUy6I4Y6MqDdVN6FAFREF5_aQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJyaWNlIiwiaWF0IjoxNjQyODU2MTAwLCJleHAiOjE2NDI5NDI1MDB9.g6Leq3UWAfJcaYoY5rK-wLRckwsqdUdeITMNid00NwU
+
+###
+

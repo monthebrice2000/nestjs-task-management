@@ -36,6 +36,8 @@ I used repository for accessing database
 I used Jwt for generating token and authentication and authorization.
 I used Interceptors for Data Serialization.
 I can create my Own Decorator function to extract another data in the request to help controller for handling.
+In plus , I used Passport Strategy tools for authorization to another route. I also used Logging tools.
+I also integrated configuration module in development mode and production mode.
 
 ## Installation
 

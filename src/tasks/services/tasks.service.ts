@@ -1,56 +1,65 @@
 import { Injectable } from '@nestjs/common';
 import { Task, TaskStatus } from '@models/task.interface';
-import { TaskEntityRepository } from '@models/task.entity.repository';
+import { TaskEntityRepository } from '@repositories/task.entity.repository';
 import { TaskEntity } from '@models/task.entity';
 import { DeleteResult, UpdateResult } from 'typeorm';
 import { FilterDto } from '@models/filter.dto';
+import { User } from '@models/user.interface';
+import { UserEntityRepository } from '@repositories/user.entity.repository';
+import { InjectRepository } from '@nestjs/typeorm';
+import { UserEntity } from '@models/user.entity';
 @Injectable()
 export class TasksService {
   private tasks: Task[] = [];
 
-  constructor(private taskRepository: TaskEntityRepository) {}
+  constructor(
+    @InjectRepository(UserEntity)
+    private readonly userEntityRepository: UserEntityRepository,
+    private taskRepository: TaskEntityRepository,
+  ) {}
 
-  async getAllTasks() {
-    return await this.taskRepository.find();
+  async getAllTasks(user: User) {
+    return await this.taskRepository.find({ user: { ...user } });
   }
 
-  async createTask(title: string, description: string): Promise<TaskEntity> {
+  async createTask(
+    title: string,
+    description: string,
+    user: User,
+  ): Promise<TaskEntity> {
+    const userFind: UserEntity = await this.userEntityRepository.findOne({
+      ...user,
+    });
     const task: Task = {
       title,
       description,
       status: TaskStatus.OPEN,
+      user: { ...userFind },
     };
-
-    //this.tasks.push(task);
     return await this.taskRepository.save(task);
   }
 
-  async getTaskById(id: string): Promise<TaskEntity> {
-    /*const task: Task = this.tasks.find((task) => {
-      return task.id === id;
-    });*/
-
-    return await this.taskRepository.findOne(id);
-  }
-
-  async deleteTaskById(id: string): Promise<DeleteResult> {
-    this.tasks = this.tasks.filter((task) => {
-      return task.id !== id;
+  async getTaskById(id: string, user: User): Promise<TaskEntity> {
+    const userF = await this.userEntityRepository.findOne({
+      ...user,
     });
-    return await this.taskRepository.delete(id);
+    console.log(user);
+    return await this.taskRepository.findOne({ id, user: userF });
   }
 
-  async updateTaskStatus(
-    status: TaskStatus,
-    id: string,
-  ): Promise<UpdateResult> {
+  async deleteTaskById(id: string): Promise<TaskEntity> {
+    const taskToDelete = await this.taskRepository.findOne(id);
+    return await this.taskRepository.remove(taskToDelete);
+  }
+
+  async updateTaskStatus(status: TaskStatus, id: string): Promise<TaskEntity> {
     const task: Task = await this.taskRepository.findOne(id);
     task.status = status;
-    // @ts-ignore
-    return await this.taskRepository.update(task);
+
+    return await this.taskRepository.save(task);
   }
 
-  async getTasksWithFilters(filterDTO: FilterDto): Promise<Task[]> {
+  /*async getTasksWithFilters(filterDTO: FilterDto): Promise<Task[]> {
     const { status, search } = filterDTO;
     let tasks: Task[] = await this.getAllTasks();
     if (status) {
@@ -66,5 +75,5 @@ export class TasksService {
     }
 
     return tasks;
-  }
+  }*/
 }

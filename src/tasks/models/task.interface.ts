@@ -1,3 +1,5 @@
+import { User } from '@models/user.interface';
+
 export enum TaskStatus {
   OPEN = 'OPEN',
   IN_PROGRESS = 'IN_PROGRESS',
@@ -10,4 +12,5 @@ export interface Task {
   description?: string;
   status?: TaskStatus;
   message?: string;
+  user?: User;
 }

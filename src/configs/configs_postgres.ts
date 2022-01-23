@@ -4,6 +4,7 @@ import { UserEntity } from '@models/user.entity';
 import { TaskEntity } from '@models/task.entity';
 import { ConfigService } from '@nestjs/config';
 import { TlsOptions } from 'tls';
+import * as fs from 'fs';
 
 export const configs_postgres = (
   configService: ConfigService,
@@ -11,8 +12,26 @@ export const configs_postgres = (
   return {
     /**
      * Object with ssl parameters
-
-    ssl: configService.get('MODE') === 'prod',*/
+     */
+    ssl:
+      configService.get('MODE') === 'prod'
+        ? {
+            rejectUnauthorized: false,
+            ca: fs
+              .readFileSync('./certificates/root.crt', { encoding: 'utf8' })
+              .toString(),
+            key: fs
+              .readFileSync('./certificates/postgresql.key', {
+                encoding: 'utf8',
+              })
+              .toString(),
+            cert: fs
+              .readFileSync('./certificates/postgresql.crt', {
+                encoding: 'utf8',
+              })
+              .toString(),
+          }
+        : false,
     /**
      * Database type.
      */
@@ -26,7 +45,7 @@ export const configs_postgres = (
     /**
      * Migrations to be loaded for this connection.
      * Accepts both migration classes and directories where from migrations need to be loaded.
-     * Directories support glob  patterns.
+     * Directories support glob patterns.
      */
     migrations: [__dirname + '/**/*/*{.ts,.js}'],
 

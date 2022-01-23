@@ -4,6 +4,7 @@ import { AuthModule } from '@modules/auth.module';
 import { TasksModule } from '@modules/tasks.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { configs_postgres } from '@configs/configs_postgres';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { configs_postgres } from '@configs/configs_postgres';
     }),
     AuthModule,
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [ConfigService],
 })
 export class AppModule {}

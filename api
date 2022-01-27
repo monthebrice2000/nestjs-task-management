@@ -1,4 +1,4 @@
-yarn --ignore-engines add dotenv typeorm @nestjs/typeorm class-validator class-transformer pg sqlite3 bcrypt mysql cross-env @nestjs/conf
+yarn --ignore-engines add dotenv typeorm @nestjs/typeorm class-validator class-transformer pg sqlite3 bcrypt mysql cross-env @nestjs/conf @nestjs/mongoose mongoose @nestjs/graphql graphql@^15 apollo-server-express
 ig heroku
 ###
 GET http://localhost:3000/auth/signIn

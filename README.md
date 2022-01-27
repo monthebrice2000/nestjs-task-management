@@ -38,7 +38,8 @@ I used Interceptors for Data Serialization.
 I can create my Own Decorator function to extract another data in the request to help controller for handling.
 In plus , I used Passport Strategy tools for authorization to another route. I also used Logging tools.
 I also integrated configuration module in development mode and production mode.
-
+I deploy my API in Heroku and I can connect to postgresql on Heroku with SSL Mode.
+I also make Unit Testing to my API with Jest Framework Testing.
 ## Installation
 
 ```bash
